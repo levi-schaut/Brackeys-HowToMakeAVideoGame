@@ -31,11 +31,12 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         rb.AddForce(0, 0, forwardForce * Time.deltaTime);
+
         if (isMovingLeft) {
-            rb.AddForce(-sidewaysForce * Time.deltaTime, 0, 0);
+            rb.AddForce(-sidewaysForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
         }
         if (isMovingRight) {
-            rb.AddForce(sidewaysForce * Time.deltaTime, 0, 0);
+            rb.AddForce(sidewaysForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
         }
     }
 }
