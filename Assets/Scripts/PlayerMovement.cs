@@ -30,13 +30,17 @@ public class PlayerMovement : MonoBehaviour
     // FixedUpdate is for making regular physics calculations
     void FixedUpdate()
     {
-        rb.AddForce(0, 0, forwardForce * Time.deltaTime);
+        if (transform.position.y > -1f) {
+            rb.AddForce(0, 0, forwardForce * Time.deltaTime);
 
-        if (isMovingLeft) {
-            rb.AddForce(-sidewaysForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
-        }
-        if (isMovingRight) {
-            rb.AddForce(sidewaysForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
+            if (isMovingLeft) {
+                rb.AddForce(-sidewaysForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
+            }
+            if (isMovingRight) {
+                rb.AddForce(sidewaysForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
+            }
+        } else {
+            FindObjectOfType<GameManager>().GameOver();
         }
     }
 }
