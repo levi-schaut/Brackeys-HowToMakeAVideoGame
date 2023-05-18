@@ -1,7 +1,10 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public float restartDelay = 2f;
+    
     bool gameHasEnded = false;
 
     /* This custom method represents a game over.  It can be called by any
@@ -11,6 +14,12 @@ public class GameManager : MonoBehaviour
         if (!gameHasEnded) {
             gameHasEnded = true;
             Debug.Log("GAME OVER");
+            Invoke("Restart", restartDelay);
         }
+    }
+
+    // Restarts the game by reloading the currently active scene.
+    void Restart() {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
