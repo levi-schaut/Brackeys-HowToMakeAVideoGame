@@ -9,6 +9,7 @@ public class PlayerCollision : MonoBehaviour
     {
         if (collisionInfo.gameObject.tag == "Obstacle") {
             movementScript.enabled = false;
+            FindObjectOfType<GameManager>().GameOver();
         }
     }
 }
