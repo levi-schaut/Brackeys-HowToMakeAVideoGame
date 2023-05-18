@@ -7,6 +7,11 @@ public class GameManager : MonoBehaviour
     
     bool gameHasEnded = false;
 
+
+    public void WinGame() {
+        Debug.Log("YOU WIN!");
+    }
+
     /* This custom method represents a game over.  It can be called by any
      * other GameObject that detects a loss condition, and it initiates a
      * game restart. */
