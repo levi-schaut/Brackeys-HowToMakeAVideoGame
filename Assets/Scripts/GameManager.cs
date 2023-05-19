@@ -4,12 +4,13 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public float restartDelay = 2f;
+    public GameObject completeLevelUI;
     
     bool gameHasEnded = false;
 
 
     public void WinGame() {
-        Debug.Log("YOU WIN!");
+        completeLevelUI.SetActive(true);
     }
 
     /* This custom method represents a game over.  It can be called by any
@@ -18,7 +19,6 @@ public class GameManager : MonoBehaviour
     public void GameOver() {
         if (!gameHasEnded) {
             gameHasEnded = true;
-            Debug.Log("GAME OVER");
             Invoke("Restart", restartDelay);
         }
     }
